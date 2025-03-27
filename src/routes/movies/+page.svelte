@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	import { fly } from 'svelte/transition';
 	import HeaderComponent from '$lib/components/Header.svelte';
 	import FooterComponent from '$lib/components/Footer.svelte';
 	import Loader from '$lib/components/Loader.svelte';
@@ -149,42 +150,45 @@
 			</div>
 		</section>
 		<div class="container mx-auto py-2">
-            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {#each movies as movie}
-                    <div class="bg-accent rounded-lg p-4 shadow-md">
-                        <h2 class="mb-4 bg-white px-2 py-1 text-center text-xl font-bold">{movie.Movie_Name}</h2>
-                        <p class="text-gray-600">Year: {movie.Year}</p>
-                        <p class="text-gray-600">Genre: {movie.Genre}</p>
-                        <p class="text-gray-600">Rating: {movie.Rating}</p>
-                        <button
-                            class="mt-2 rounded bg-bermuda px-4 py-2 text-white hover:bg-green-600"
-                            on:click={() => goToMovieDetails(movie)}
-                        >
-                            <Icon icon="mdi:eye" class="mr-2 inline-block" />
-                            View Details
-                        </button>
-                    </div>
-                {/each}
-            </div>
-            <div class="mt-4 mb-3 flex justify-center">
-                <button
-                    class="bg-midnight hover:bg-midnight flex items-center rounded px-4 py-2 text-white disabled:opacity-50"
-                    on:click={goToPreviousPage}
-                    disabled={!previous}
-                >
-                    <Icon icon="mdi:arrow-left" class="mr-2" />
-                    Previous
-                </button>
-                <button
-                    class="bg-midnight hover:bg-midnight mx-2 flex items-center rounded px-4 py-2 text-white disabled:opacity-50"
-                    on:click={goToNextPage}
-                    disabled={!next}
-                >
-                    Next
-                    <Icon icon="mdi:arrow-right" class="ml-2" />
-                </button>
-            </div>
-        </div>
+			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+				{#each movies as movie (movie.ID)}
+					<div
+						class="bg-accent rounded-lg p-4 shadow-md"
+						transition:fly="{{ x: 300, duration: 500 }}"
+					>
+						<h2 class="mb-4 bg-white px-2 py-1 text-center text-xl font-bold">{movie.Movie_Name}</h2>
+						<p class="text-gray-600">Year: {movie.Year}</p>
+						<p class="text-gray-600">Genre: {movie.Genre}</p>
+						<p class="text-gray-600">Rating: {movie.Rating}</p>
+						<button
+							class="mt-2 rounded bg-bermuda px-4 py-2 text-white hover:bg-green-600"
+							on:click={() => goToMovieDetails(movie)}
+						>
+							<Icon icon="mdi:eye" class="mr-2 inline-block" />
+							View Details
+						</button>
+					</div>
+				{/each}
+			</div>
+			<div class="mt-4 mb-3 flex justify-center">
+				<button
+					class="bg-midnight hover:bg-midnight flex items-center rounded px-4 py-2 text-white disabled:opacity-50"
+					on:click={goToPreviousPage}
+					disabled={!previous}
+				>
+					<Icon icon="mdi:arrow-left" class="mr-2" />
+					Previous
+				</button>
+				<button
+					class="bg-midnight hover:bg-midnight mx-2 flex items-center rounded px-4 py-2 text-white disabled:opacity-50"
+					on:click={goToNextPage}
+					disabled={!next}
+				>
+					Next
+					<Icon icon="mdi:arrow-right" class="ml-2" />
+				</button>
+			</div>
+		</div>
 	</div>
 {/if}
 

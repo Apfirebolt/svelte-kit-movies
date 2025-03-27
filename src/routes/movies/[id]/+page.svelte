@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { fly } from 'svelte/transition';
     import HeaderComponent from '$lib/components/Header.svelte';
     import FooterComponent from '$lib/components/Footer.svelte';
     import Loader from '$lib/components/Loader.svelte';
@@ -52,7 +53,7 @@
 <section class="relative bg-cover bg-center h-[500px]" style="background-image: url('https://plus.unsplash.com/premium_photo-1710409625244-e9ed7e98f67b?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
     <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black bg-opacity-50 flex items-center justify-center">
         <div class="text-center min-w-xl text-white">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4" in:fly={{ x: 300, duration: 500 }}>
                 {displayedMovieName}
             </h1>
             <div class="bg-white p-4 rounded-lg">
