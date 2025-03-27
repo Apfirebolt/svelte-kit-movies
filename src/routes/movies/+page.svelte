@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import { goto } from '$app/navigation';
     import HeaderComponent from '$lib/components/Header.svelte';
     import FooterComponent from '$lib/components/Footer.svelte';
     import Loader from '$lib/components/Loader.svelte';
@@ -58,6 +59,10 @@
         }
     }
 
+    const goToMovieDetails = (movie: Movie) => {
+        goto(`/movies/${movie.ID}`);
+    };
+
     onMount(() => {
         fetchMovies();
     });
@@ -78,6 +83,11 @@
                     <p class="text-gray-600">Year: {movie.Year}</p>
                     <p class="text-gray-600">Genre: {movie.Genre}</p>
                     <p class="text-gray-600">Rating: {movie.Rating}</p>
+                    <button 
+                        class="mt-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" 
+                        on:click={() => goToMovieDetails(movie)}>
+                        View Details
+                    </button>
                 </div>
             {/each}
         </div>
