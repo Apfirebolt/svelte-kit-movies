@@ -16,7 +16,7 @@
 
 <header class="bg-midnight text-white">
 	<div class="container mx-auto flex items-center justify-between px-6 py-4">
-		<h1 class="text-2xl font-bold">{title}</h1>
+		<h1 class="text-3xl font-bold">{title}</h1>
 		<button
 			class="lg:hidden text-white focus:outline-none"
 			on:click={toggleMenu}
@@ -31,7 +31,7 @@
 						<a 
 							href={item.url} 
 							data-sveltekit-prefetch 
-							class="hover:text-gray-400 text-white px-3 py-2 rounded transition-all duration-300 ease-in-out group-hover:bg-amber-400 group-hover:text-black group-hover:scale-105"
+							class="hover:text-gray-400 text-white px-3 py-2 rounded transition-all duration-300 ease-in-out group-hover:bg-bermuda group-hover:text-black group-hover:scale-105"
 						>
 							{item.name}
 						</a>
@@ -43,7 +43,7 @@
 
 	<!-- Mobile Menu -->
 	<div
-		class="fixed top-0 right-0 bg-midnight text-white h-full w-1/2 transform transition-transform duration-300 ease-in-out"
+		class="fixed top-0 right-0 bg-midnight text-white z-40 h-full w-1/2 transform transition-transform duration-300 ease-in-out"
 		class:translate-x-0={isMenuOpen}
 		class:translate-x-full={!isMenuOpen}
 	>
@@ -58,7 +58,7 @@
 		</div>
 		<ul class="space-y-4 px-6">
 			{#each menuItems as item}
-				<li class="bg-amber-400 text-white px-2 py-3 text-center shadow-xl rounded hover:bg-amber-500 transition-colors duration-300">
+				<li class="bg-bermuda text-white px-2 py-3 text-center shadow-xl rounded hover:bg-amber-500 transition-colors duration-300">
 					<a href={item.url} data-sveltekit-prefetch class="hover:text-gray-400 " on:click={toggleMenu}>
 						{item.name}
 					</a>
