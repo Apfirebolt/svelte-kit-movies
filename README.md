@@ -4,11 +4,22 @@
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 
+## Screenshot
+
+![Cover](./screenshots/1.png)
+
 ## About the Project
 
 Svelte Kit Movies is a web application built with SvelteKit, TailwindCSS, and TypeScript. It allows users to search for movies and view detailed information about them. The project leverages modern web technologies to provide a fast, responsive, and user-friendly experience.
 
 For movies data it uses the following API which is also created by me https://softgenie.org/api/movies
+
+## Screenshots
+
+Please find some of the screenshots of the application below.
+
+![Screenshot 1](./screenshots/1.png)
+![Screenshot 2](./screenshots/2.png)
 
 ## SSR - When to render on client and when on server?
 

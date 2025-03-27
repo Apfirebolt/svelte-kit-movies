@@ -31,7 +31,7 @@
 						<a 
 							href={item.url} 
 							data-sveltekit-prefetch 
-							class="hover:text-gray-400 text-white px-3 py-2 rounded transition-all duration-300 ease-in-out group-hover:bg-bermuda group-hover:text-black group-hover:scale-105"
+							class="text-white px-3 py-2 rounded transition-all duration-300 ease-in-out group-hover:bg-bermuda group-hover:text-black group-hover:scale-105"
 						>
 							{item.name}
 						</a>
@@ -59,7 +59,7 @@
 		<ul class="space-y-4 px-6">
 			{#each menuItems as item}
 				<li class="bg-bermuda text-white px-2 py-3 text-center shadow-xl rounded hover:bg-amber-500 transition-colors duration-300">
-					<a href={item.url} data-sveltekit-prefetch class="hover:text-gray-400 " on:click={toggleMenu}>
+					<a href={item.url} data-sveltekit-prefetch on:click={toggleMenu}>
 						{item.name}
 					</a>
 				</li>
