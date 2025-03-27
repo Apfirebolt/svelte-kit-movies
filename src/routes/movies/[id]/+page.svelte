@@ -18,6 +18,25 @@
     }
 
     $: movie = data.movie as Movie | null; // Assign data.movie to the movie variable.
+
+    let displayedMovieName = "";
+    let movieNameIndex = 0;
+
+    // Typewriter effect logic for movie name
+    const typeWriterMovieName = () => {
+        if (movie && movieNameIndex < movie.Movie_Name.length) {
+            displayedMovieName += movie.Movie_Name[movieNameIndex];
+            movieNameIndex++;
+            setTimeout(typeWriterMovieName, 100); // Adjust speed here
+        }
+    };
+
+    // Start the typewriter effect when the movie data is available
+    $: if (movie) {
+        displayedMovieName = ""; // Reset displayed name
+        movieNameIndex = 0; // Reset index
+        typeWriterMovieName();
+    }
 </script>
 
 <svelte:head>
@@ -30,14 +49,39 @@
 {#if !movie}
     <Loader />
 {:else}
-    <div class="container mx-auto py-6">
-        <h2 class="text-2xl font-bold">{movie.Movie_Name}</h2>
-        <p class="text-gray-600">Year: {movie.Year}</p>
-        <p class="text-gray-600">Genre: {movie.Genre}</p>
-        <p class="text-gray-600">Rating: {movie.Rating}</p>
-        <p class="text-gray-600">Language: {movie.Language}</p>
-        <p class="text-gray-600">Description: {movie.Description}</p>
+<section class="relative bg-cover bg-center h-[500px]" style="background-image: url('https://plus.unsplash.com/premium_photo-1710409625244-e9ed7e98f67b?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+    <div class="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black bg-opacity-50 flex items-center justify-center">
+        <div class="text-center min-w-xl text-white">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                {displayedMovieName}
+            </h1>
+            <div class="bg-white p-4 rounded-lg">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <p class="text-gray-600 font-semibold">Year:</p>
+                        <p class="text-gray-800">{movie.Year}</p>
+                    </div>
+                    <div class="bg-gray-200 p-4 rounded-lg">
+                        <p class="text-gray-600 font-semibold">Genre:</p>
+                        <p class="text-gray-800">{movie.Genre}</p>
+                    </div>
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <p class="text-gray-600 font-semibold">Rating:</p>
+                        <p class="text-gray-800">{movie.Rating}</p>
+                    </div>
+                    <div class="bg-gray-200 p-4 rounded-lg">
+                        <p class="text-gray-600 font-semibold">Language:</p>
+                        <p class="text-gray-800">{movie.Language}</p>
+                    </div>
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <p class="text-gray-600 font-semibold">Timing:</p>
+                        <p class="text-gray-800">{movie.Timing}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</section>
 {/if}
 
 <FooterComponent />
