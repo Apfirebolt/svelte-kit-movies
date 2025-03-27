@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
     import HeaderComponent from '$lib/components/Header.svelte';
     import FooterComponent from '$lib/components/Footer.svelte';
     import Loader from '$lib/components/Loader.svelte';
@@ -57,11 +58,12 @@
         }
     }
 
-    fetchMovies();
+    onMount(() => {
+        fetchMovies();
+    });
 </script>
 
 <HeaderComponent title="Movies" />
-
 {#if loading}
     <Loader />
 {:else if error}
