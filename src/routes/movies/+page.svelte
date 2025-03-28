@@ -6,24 +6,7 @@
 	import FooterComponent from '$lib/components/Footer.svelte';
 	import Loader from '$lib/components/Loader.svelte';
 	import Icon from '@iconify/svelte';
-
-	interface Movie {
-		ID: number;
-		Movie_Name: string;
-		Year: number;
-		Timing: string;
-		Rating: number;
-		Votes: string;
-		Genre: string;
-		Language: string;
-	}
-
-	interface ApiResponse {
-		count: number;
-		next: string | null;
-		previous: string | null;
-		results: Movie[];
-	}
+	import type { Movie, ApiResponse } from '$lib/types/Movie.ts';
 
 	let movies: Movie[] = [];
 	let searchQuery: string = '';

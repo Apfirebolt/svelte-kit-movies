@@ -1,23 +1,6 @@
 import type { RequestHandler } from './$types';
 import { json } from '@sveltejs/kit';
-
-interface Movie {
-  ID: number;
-  Movie_Name: string;
-  Year: number;
-  Timing: string;
-  Rating: number;
-  Votes: string;
-  Genre: string;
-  Language: string;
-}
-
-interface ApiResponse {
-  count: number;
-  next: string | null;
-  previous: string | null;
-  results: Movie[];
-}
+import type { Movie, ApiResponse } from '$lib/types/Movie';
 
 export const GET: RequestHandler = async () => {
   try {

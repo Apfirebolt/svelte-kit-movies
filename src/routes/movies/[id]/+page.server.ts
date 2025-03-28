@@ -1,17 +1,8 @@
 // src/routes/movies/[id]/+page.server.ts
 
 import type { PageServerLoad } from './$types';
+import type { Movie } from '$lib/types/Movie';
 
-interface Movie {
-    ID: number;
-    Movie_Name: string;
-    Year: number;
-    Timing: string;
-    Rating: number;
-    Votes: string;
-    Genre: string;
-    Language: string;
-}
 
 export const load: PageServerLoad = async ({ params }) => {
     const { id } = params;
